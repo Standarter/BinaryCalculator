@@ -83,6 +83,45 @@ while True:
             del temp
         else:
             print("Equations dosen't set.")
+    if cmd.find("equ_solve_find") != -1:
+        if len(cmd.split(" ")) == 2:
+            if len(equation) != 0:
+                temp = {}
+                for i in variables:
+                    temp[i] = generate_array(variables.index(i) + 1, len(variables))
+                table_start = "|"
+                for i in variables:
+                    table_start += "{0:^3}".format(i)
+                    table_start += "|"
+                table_start += ("{0:^" + str(len(equation) + 2) + "}").format(equation) + "|"
+                print("-"*len(table_start))
+                print(table_start)
+                for i in range(2**len(variables)):
+                    equation_temp = equation
+                    equation_temp = equation_temp.replace(" => ", " <= ")
+                    for j in variables:
+                        if j not in variables_num.keys():
+                            equation_temp = equation_temp.replace(j, str(temp[j][i]))
+                        else:
+                            equation_temp = equation_temp.replace(j, str(variables_num[j]))
+                    result = eval(equation_temp)
+                    if result == int(cmd.split(" ")[1]):
+                        for_print = "|"
+                        for k in variables:
+                            if k not in variables_num.keys():
+                                for_print += "{0:^3}".format(str(temp[k][i]))
+                                for_print += "|"
+                            else:
+                                for_print += "{0:^3}".format(str(variables_num[k]))
+                                for_print += "|"
+                        for_print += ("{0:^" + str(len(equation) + 2) + "}").format(result) + "|"
+                        print(for_print)
+                print("-"*len(table_start))
+                del temp
+            else:
+                print("Equations dosen't set.")
+        else:
+            print("Parametr dosen't set")
     if cmd.find("var_show") != -1:
         if len(variables) != 0:
             for i in variables:
