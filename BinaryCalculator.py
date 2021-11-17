@@ -8,7 +8,7 @@ def generate_array(n = 1, max_var = 1):
 variables = ["A", "B"]
 variables_num = {}
 variables_count = 0
-equation = ""
+equation = "" #
 while True:
     cmd = input("Enter command >>> ")
     if cmd.find("var_add") != -1:
