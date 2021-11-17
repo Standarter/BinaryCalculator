@@ -66,6 +66,7 @@ while True:
                 table_start += ("{0:^" + str(len(equation) + 2) + "}").format(equation) + "|"
                 print("-"*len(table_start))
                 print(table_start)
+                print("-"*len(table_start))
                 for i in range(2**len(variables)):
                     equation_temp = equation
                     equation_temp = equation_temp.replace(" => ", " <= ")
@@ -105,6 +106,7 @@ while True:
                     table_start += ("{0:^" + str(len(equation) + 2) + "}").format(equation) + "|"
                     print("-"*len(table_start))
                     print(table_start)
+                    print("-"*len(table_start))
                     for i in range(2**len(variables)):
                         equation_temp = equation
                         equation_temp = equation_temp.replace(" => ", " <= ")
